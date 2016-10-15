@@ -26,13 +26,27 @@ set nu
 
 """"""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
+let maplocalleader=","
 
 " 快速配置 .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" 映射 jk -> esc, disable esc, ctrl+[
+inoremap jk <esc>
+vnoremap jk <esc>
+inoremap <esc> <nop>
+inoremap <c-[> <nop>
+
+" 移动到行首, 行尾
+nnoremap H ^
+nnoremap L $
+
 " imod 使刚输入的单词大写
 inoremap <c-u> <esc>hvawUA
+" nmod 使光标下的单词两边加上 ", ' 并返回 nmod
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
 " nmod 向上, 向下插入一行, 并返回 nomarl
 nnoremap <leader>j o<esc>k
@@ -42,4 +56,19 @@ nnoremap <leader>k O<esc>j
 " 缩写替换功能, 下面是演示, 在插入模式中输入缩写后可以自动替换成后面的字符串
 iabbrev @@ codergege@163.com
 iabbrev ccopy Copyright 2016 codergege, all rights reserved.
+
+""""""""""""""""""""""""""""""""""""""""""""
+" autocmd event pattern command
+" 自动检测 event, 如果符合 pattern, 就执行 command
+
+" html 文件, 在输入 :w 回车后, 自动执行 gg=G 命令
+" autocmd BufWritePre *.html :normal gg=G
+autocmd BufWritePre,BufRead *.html :normal gg=G
+" 一般 BufNewFile,BufRead 这两个事件都会一起使用
+" 编辑 html 文件时, 不 wrap 
+autocmd BufNewFile,BufRead *.html set nowrap
+" 当是 javascript 文件时设置注释为 //
+" 其他 注释
+autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+autocmd FileType java nnoremap <buffer> <localleader>c I//<esc>
 
