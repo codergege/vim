@@ -34,6 +34,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " imod 使刚输入的单词大写
 inoremap <c-u> <esc>hvawUA
 
+" nmod 向上, 向下插入一行, 并返回 nomarl
+nnoremap <leader>j o<esc>k
+nnoremap <leader>k O<esc>j
 
 """"""""""""""""""""""""""""""""""""""""""""
-iabbrev adn and
+" 缩写替换功能, 下面是演示, 在插入模式中输入缩写后可以自动替换成后面的字符串
+iabbrev @@ codergege@163.com
+iabbrev ccopy Copyright 2016 codergege, all rights reserved.
+
