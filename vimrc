@@ -1,10 +1,63 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 """""""""""""" BASIC """""""""""""""""
+" use utf-8
+set encoding=utf-8
+
+" solarized color scheme
+syntax enable
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized
+
 " 从不备份
 set nobackup
 " 不产生 swap file
 set noswapfile
-" 不要使用 vi 键盘模式, 使用 vim 自己的
-set nocompatible
 " 解决 backspace 无法使用的问题
 set backspace=indent,eol,start
 " 去掉错误声
@@ -23,7 +76,28 @@ set noexpandtab
 syntax on
 " 设置 nu
 set nu
+" Show line number, curso position
+set ruler
 
+" Status line
+set laststatus=2
+set statusline=
+"" buffer number
+set statusline+=%-3.3n\
+"" filename
+set statusline+=%f\
+"" status flags
+set statusline+=%h%m%r%w
+"" file type
+set statusline+=\[%{strlen(&ft)?&ft:'none'}]
+"" right align remainder
+set statusline+=%=
+"" character value
+set statusline+=0x%-8B
+"" line, character
+set statusline+=%-14(%l,%c%V%)
+"" file posistion
+set statusline+=%<%P
 """"""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
 let maplocalleader=","
@@ -52,10 +126,14 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap <leader>j o<esc>k
 nnoremap <leader>k O<esc>j
 
+" 插入时间
+nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
+"imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 """"""""""""""""""""""""""""""""""""""""""""
 " 缩写替换功能, 下面是演示, 在插入模式中输入缩写后可以自动替换成后面的字符串
 iabbrev @@ codergege@163.com
 iabbrev ccopy Copyright 2016 codergege, all rights reserved.
+iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
 " autocmd event pattern command
