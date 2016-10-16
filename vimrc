@@ -61,9 +61,16 @@ iabbrev ccopy Copyright 2016 codergege, all rights reserved.
 " autocmd event pattern command
 " 自动检测 event, 如果符合 pattern, 就执行 command
 
+" autocmd group
+augroup codergege
+" 防止重复载入
+autocmd!
+
 " html 文件, 在输入 :w 回车后, 自动执行 gg=G 命令
 " autocmd BufWritePre *.html :normal gg=G
 autocmd BufWritePre,BufRead *.html :normal gg=G
+" html 文件 ,f -> fold 当前 tag
+autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
 " 一般 BufNewFile,BufRead 这两个事件都会一起使用
 " 编辑 html 文件时, 不 wrap 
 autocmd BufNewFile,BufRead *.html set nowrap
@@ -71,4 +78,11 @@ autocmd BufNewFile,BufRead *.html set nowrap
 " 其他 注释
 autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType java nnoremap <buffer> <localleader>c I//<esc>
+" autocmd 和 abbrev 配合
+" 当是 javascript file 时, 输入 iff 自动替换成 if () 并将光标放在 （） 内
+autocmd FileType javascript iabbrev <buffer> iff if ()<left>
+" 这条想法不能执行, 得想其他办法
+"autocmd FileType javascript iabbrev  iff if ()<esc>hi
+
+augroup END
 
