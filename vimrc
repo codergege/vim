@@ -12,24 +12,18 @@ Plugin 'VundleVim/Vundle.vim'
 
 " xmledit on github
 Plugin 'sukima/xmledit'
+
 " javacomplete2 
 Plugin 'artur-shaik/vim-javacomplete2'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" color shcemes
+Plugin 'flazz/vim-colorschemes'
+
+" LeaderF 全局搜索文件插件
+Plugin 'Yggdroot/LeaderF'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,7 +42,6 @@ filetype plugin indent on    " required
 """""""""""""" BASIC """""""""""""""""
 " use utf-8
 set encoding=utf-8
-
 " solarized color scheme
 syntax enable
 if has('gui_running')
@@ -56,7 +49,12 @@ if has('gui_running')
 else
     set background=dark
 endif
-colorscheme solarized
+"colorscheme solarized
+colorscheme molokai
+
+" nerdtree
+"" 是否显示隐藏文件
+"let NERDTreeShowHidden=1
 
 " 从不备份
 set nobackup
@@ -105,9 +103,16 @@ set statusline+=%<%P
 let mapleader=","
 let maplocalleader=","
 
+" nerdtree
+"" 不显示这些文件
+let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules'] "ignore files in NERDTree
+
 " 快速配置 .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" nerdtree toggle
+map <C-n> :NERDTreeToggle<CR>
 
 " 映射 jk -> esc, disable esc, ctrl+[
 inoremap jk <esc>
@@ -150,6 +155,13 @@ autocmd!
 
 " enable javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" nerdtree 自动打开 nerdtree, 并将光标停留在右侧编辑区
+autocmd vimenter * NERDTree
+wincmd w
+autocmd VimEnter * wincmd w
+" nerdtree 只剩 nerdtree 窗口时关闭 vim
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " html 文件, 在输入 :w 回车后, 自动执行 gg=G 命令
 " autocmd BufWritePre *.html :normal gg=G
