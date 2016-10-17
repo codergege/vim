@@ -12,6 +12,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " xmledit on github
 Plugin 'sukima/xmledit'
+" javacomplete2 
+Plugin 'artur-shaik/vim-javacomplete2'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -66,7 +68,6 @@ set backspace=indent,eol,start
 set noeb
 " 自动缩进
 set autoindent
-set cindent
 " tab 宽度
 set tabstop=4
 " 统一缩进为 4
@@ -135,6 +136,7 @@ nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
 " 缩写替换功能, 下面是演示, 在插入模式中输入缩写后可以自动替换成后面的字符串
 iabbrev @@ codergege@163.com
 iabbrev ccopy Copyright 2016 codergege, all rights reserved.
+" imod 插入时间
 iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -145,6 +147,9 @@ iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR>
 augroup codergege
 " 防止重复载入
 autocmd!
+
+" enable javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " html 文件, 在输入 :w 回车后, 自动执行 gg=G 命令
 " autocmd BufWritePre *.html :normal gg=G
