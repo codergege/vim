@@ -27,6 +27,9 @@ Plugin 'flazz/vim-colorschemes'
 " LeaderF 全局搜索文件插件
 Plugin 'Yggdroot/LeaderF'
 
+" vimwiki
+ Plugin 'vimwiki'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -101,7 +104,9 @@ set statusline+=0x%-8B
 set statusline+=%-14(%l,%c%V%)
 "" file posistion
 set statusline+=%<%P
+
 """"""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
 let maplocalleader=","
 
@@ -155,6 +160,16 @@ augroup codergege
 " 防止重复载入
 autocmd!
 
+" Vimwiki set
+" 下面的设置不起作用
+"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader1 guifg=#FF0000
+"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader2 guifg=#00FF00
+"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader3 guifg=#0000FF
+"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader4 guifg=#FF00FF
+"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader5 guifg=#00FFFF
+"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader6 guifg=#FFFF00
+
+"
 " enable javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
