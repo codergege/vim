@@ -28,7 +28,10 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'Yggdroot/LeaderF'
 
 " vimwiki
- Plugin 'vimwiki'
+Plugin 'vimwiki'
+
+" text-obj
+Plugin 'kana/vim-textobj-user'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,6 +63,15 @@ colorscheme molokai
 " nerdtree
 "" 是否显示隐藏文件
 "let NERDTreeShowHidden=1
+
+" vimwiki
+" 禁用驼峰词条
+let g:vimwiki_camel_case=0
+
+" vim 中拷贝到系统剪切板
+set clipboard=unnamed
+" vim 拷贝模式, 防止自动缩进和补全
+set pastetoggle=<c-p>
 
 " 从不备份
 set nobackup
