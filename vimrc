@@ -47,6 +47,27 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+"""""""""""""" FUNCTION """""""""""""""""
+" 最大化当前窗口
+function! Zoom ()
+    " check if is the zoomed state (tabnumber > 1 && window == 1)
+    if tabpagenr('$') > 1 && tabpagewinnr(tabpagenr(), '$') == 1
+        let l:cur_winview = winsaveview()
+        let l:cur_bufname = bufname('')
+        tabclose
+
+        " restore the view
+        if l:cur_bufname == bufname('')
+            call winrestview(cur_winview)
+        endif
+    else
+        tab split
+    endif
+endfunction
+
+nnoremap <leader>z :call Zoom()<CR>
+
 """""""""""""" BASIC """""""""""""""""
 " use utf-8
 set encoding=utf-8
@@ -132,6 +153,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
+
+" 映射 vimwiki 全部转成 html 命令为: f12
+nnoremap <f2> :VimwikiAll2HTML<cr>
 
 " 映射 jk -> esc, disable esc, ctrl+[
 inoremap jk <esc>
