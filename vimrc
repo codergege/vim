@@ -69,7 +69,7 @@ colorscheme molokai
 let g:vimwiki_camel_case=0
 
 " vim 中拷贝到系统剪切板
-set clipboard=unnamed
+set clipboard+=unnamedplus
 " vim 拷贝模式, 防止自动缩进和补全
 set pastetoggle=<c-p>
 
