@@ -111,7 +111,8 @@ let g:vimwiki_camel_case=0
 " vim 中拷贝到系统剪切板
 set clipboard=unnamedplus
 " vim 拷贝模式, 防止自动缩进和补全
-set pastetoggle=<c-p>
+" 不起作用
+" set pastetoggle=<f12>
 
 " 从不备份
 set nobackup
@@ -213,9 +214,8 @@ inoremap <c-u> <esc>hvawUA
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
-" nmod 向上, 向下插入一行, 并返回 nomarl
-nnoremap <leader>j o<esc>k
-nnoremap <leader>k O<esc>j
+" 折叠
+set foldmethod=marker
 
 " 插入时间
 nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
@@ -225,7 +225,8 @@ nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
 iabbrev @@ codergege@163.com
 iabbrev ccopy Copyright 2016 codergege, all rights reserved.
 " imod 插入时间
-iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR>
+iabbrev ,d <C-R>=strftime("%Y-%m-%d")<CR>
+iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
 " autocmd event pattern command
@@ -236,16 +237,6 @@ augroup codergege
 " 防止重复载入
 autocmd!
 
-" Vimwiki set
-" 下面的设置不起作用
-"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader1 guifg=#FF0000
-"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader2 guifg=#00FF00
-"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader3 guifg=#0000FF
-"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader4 guifg=#FF00FF
-"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader5 guifg=#00FFFF
-"autocmd BufNewFile,BufRead *.wiki hi VimwikiHeader6 guifg=#FFFF00
-
-"
 " enable javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
@@ -259,6 +250,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " html 文件, 在输入 :w 回车后, 自动执行 gg=G 命令
 " autocmd BufWritePre *.html :normal gg=G
 autocmd BufWritePre,BufRead *.html :normal gg=G
+
 " html 文件 ,f -> fold 当前 tag
 autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
 " 一般 BufNewFile,BufRead 这两个事件都会一起使用
