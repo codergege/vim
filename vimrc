@@ -21,6 +21,9 @@ Plugin 'artur-shaik/vim-javacomplete2'
 " nerdtree
 Plugin 'scrooloose/nerdtree'
 
+" commenter
+Plugin 'scrooloose/nerdcommenter'
+
 " color shcemes
 Plugin 'flazz/vim-colorschemes'
 
@@ -32,6 +35,22 @@ Plugin 'vimwiki'
 
 " text-obj
 Plugin 'kana/vim-textobj-user'
+
+" text-obj - a line: al
+Plugin 'kana/vim-textobj-line'
+
+" text-obj - entire: ae, ie
+Plugin 'kana/vim-textobj-entire'
+
+" text-obj - function: 
+" daf to Delete A Function, and
+" vif to Visually select the code Inside a Function.
+" yaF to Yank A Function with leading or trailing blank lines, and
+" viF to visually select a function without leading or trailing blank lines.
+Plugin 'kana/vim-textobj-function'
+
+" text-obj - url: au, iu with or without tailing spaces
+Plugin 'jceb/vim-textobj-uri'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -147,6 +166,27 @@ let maplocalleader=","
 "" 不显示这些文件
 let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules'] "ignore files in NERDTree
 
+" nerdcommeter set up
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 " 快速配置 .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
