@@ -188,6 +188,7 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+
 " 快速配置 .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -204,18 +205,27 @@ vnoremap jk <esc>
 inoremap <esc> <nop>
 inoremap <c-[> <nop>
 
+" 自动补全快捷键修改 
+" 不起作用
+"inoremap <a-/> <c-r>=complete()<cr>
+
 " 移动到行首, 行尾
 nnoremap H ^
 nnoremap L $
 
 " imod 使刚输入的单词大写
 inoremap <c-u> <esc>hvawUA
+
 " nmod 使光标下的单词两边加上 ", ' 并返回 nmod
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
+" nmod 加入空行, 并返回 nmod
+nnoremap <leader>j o<esc>k
 " 折叠
 set foldmethod=marker
+" 设置折叠切换为 <space> 
+nnoremap <space> za
 
 " 插入时间
 nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
