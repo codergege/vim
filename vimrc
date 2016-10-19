@@ -15,9 +15,6 @@ Plugin 'VundleVim/Vundle.vim'
 " xmledit on github
 Plugin 'sukima/xmledit'
 
-" javacomplete2 
-Plugin 'artur-shaik/vim-javacomplete2'
-
 " nerdtree
 Plugin 'scrooloose/nerdtree'
 
@@ -51,6 +48,15 @@ Plugin 'kana/vim-textobj-function'
 
 " text-obj - url: au, iu with or without tailing spaces
 Plugin 'jceb/vim-textobj-uri'
+
+" java 
+"Plugin 'artur-shaik/vim-javacomplete2'
+" 以后考虑安装的插件
+"Plugin 'java_src_link.vim'
+"Plugin 'Java-Syntax-and-Folding'
+"Plugin 'java_checkstyle.vim'
+"Plugin 'JavaDecompiler.vim'
+"Plugin 'javalog.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -197,7 +203,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 map <C-n> :NERDTreeToggle<CR>
 
 " 映射 vimwiki 全部转成 html 命令为: f12
-nnoremap <f2> :VimwikiAll2HTML<cr>
+nnoremap <f3> :VimwikiAll2HTML<cr>
 
 " 映射 jk -> esc, disable esc, ctrl+[
 inoremap jk <esc>
@@ -248,7 +254,7 @@ augroup codergege
 autocmd!
 
 " enable javacomplete2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " nerdtree 自动打开 nerdtree, 并将光标停留在右侧编辑区
 autocmd vimenter * NERDTree
