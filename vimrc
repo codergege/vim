@@ -49,6 +49,12 @@ Plugin 'kana/vim-textobj-function'
 " text-obj - url: au, iu with or without tailing spaces
 Plugin 'jceb/vim-textobj-uri'
 
+" 这个插件不能被 vundle 加入, 自动补全
+"plugin 'kana/vim-smartinput'
+
+" 自动不全
+Plugin 'Auto-Pairs'
+
 " java 
 Plugin 'artur-shaik/vim-javacomplete2'
 " 以后考虑安装的插件
@@ -120,6 +126,9 @@ set clipboard=unnamedplus
 " 不起作用
 " set pastetoggle=<f12>
 
+" 自动保存
+au FocusLost * silent! wa
+let autosave=5
 " 从不备份
 set nobackup
 " 不产生 swap file
@@ -202,6 +211,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
 
+" auto-pairs 飞行模式, 强制跳转到 ) ] }
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+
+
 " 映射 vimwiki 全部转成 html 命令为: f12
 nnoremap <f3> :VimwikiAll2HTML<cr>
 
@@ -244,6 +258,11 @@ iabbrev ccopy Copyright 2016 codergege, all rights reserved.
 iabbrev ,d <C-R>=strftime("%Y-%m-%d")<CR>
 iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
+" java 缩写替换
+iab psvm public static void main(String[] args) { }<UP><END><BS><BS>
+"iab { { }<UP><END><BS><BS>
+iab syso System.out.println();<LEFT><LEFT>
+iab syse System.err.println();<LEFT><LEFT>
 """"""""""""""""""""""""""""""""""""""""""""
 " autocmd event pattern command
 " 自动检测 event, 如果符合 pattern, 就执行 command
@@ -283,4 +302,3 @@ autocmd FileType javascript iabbrev <buffer> iff if ()<left>
 "autocmd FileType javascript iabbrev  iff if ()<esc>hi
 
 augroup END
-
