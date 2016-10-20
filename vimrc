@@ -50,7 +50,7 @@ Plugin 'kana/vim-textobj-function'
 Plugin 'jceb/vim-textobj-uri'
 
 " java 
-"Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'artur-shaik/vim-javacomplete2'
 " 以后考虑安装的插件
 "Plugin 'java_src_link.vim'
 "Plugin 'Java-Syntax-and-Folding'
@@ -254,7 +254,7 @@ augroup codergege
 autocmd!
 
 " enable javacomplete2
-"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " nerdtree 自动打开 nerdtree, 并将光标停留在右侧编辑区
 autocmd vimenter * NERDTree
@@ -274,8 +274,8 @@ autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
 autocmd BufNewFile,BufRead *.html set nowrap
 " 当是 javascript 文件时设置注释为 //
 " 其他 注释
-autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
-autocmd FileType java nnoremap <buffer> <localleader>c I//<esc>
+" autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+"autocmd FileType java nnoremap <buffer> <localleader>c I//<esc>
 " autocmd 和 abbrev 配合
 " 当是 javascript file 时, 输入 iff 自动替换成 if () 并将光标放在 （） 内
 autocmd FileType javascript iabbrev <buffer> iff if ()<left>
