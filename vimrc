@@ -250,14 +250,15 @@ nnoremap <space> za
 " 插入时间
 nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
 "imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
+"
 """"""""""""""""""""""""""""""""""""""""""""
 " 缩写替换功能, 下面是演示, 在插入模式中输入缩写后可以自动替换成后面的字符串
 iabbrev @@ codergege@163.com
 iabbrev ccopy Copyright 2016 codergege, all rights reserved.
-" imod 插入时间
+
+" imod 插入时间 为什么不起作用了呢
 iabbrev ,d <C-R>=strftime("%Y-%m-%d")<CR>
 iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-
 " java 缩写替换
 iab psvm public static void main(String[] args) { }<UP><END><BS><BS>
 "iab { { }<UP><END><BS><BS>
