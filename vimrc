@@ -79,27 +79,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-"""""""""""""" FUNCTION """""""""""""""""
-" 最大化当前窗口
-function! Zoom ()
-    " check if is the zoomed state (tabnumber > 1 && window == 1)
-    if tabpagenr('$') > 1 && tabpagewinnr(tabpagenr(), '$') == 1
-        let l:cur_winview = winsaveview()
-        let l:cur_bufname = bufname('')
-        tabclose
-
-        " restore the view
-        if l:cur_bufname == bufname('')
-            call winrestview(cur_winview)
-        endif
-    else
-        tab split
-    endif
-endfunction
-
-nnoremap <leader>z :call Zoom()<CR>
-
-"""""""""""""" BASIC """""""""""""""""
+""""""""""""" BASIC """""""""""""""""
 " use utf-8
 set encoding=utf-8
 " solarized color scheme
@@ -231,7 +211,9 @@ inoremap <c-[> <nop>
 
 " 移动到行首, 行尾
 nnoremap H ^
+vnoremap H ^
 nnoremap L $
+vnoremap L $
 
 " imod 使刚输入的单词大写
 inoremap <c-u> <esc>hvawUA
@@ -248,22 +230,26 @@ set foldmethod=marker
 nnoremap <space> za
 
 " 插入时间
-nmap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
+nnoremap <leader>t a<C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR><Esc>
+inoremap <leader>t <C-R>=strftime("%Y-%m-%d %H:%M:%S ")<CR>
+nnoremap <leader>d a<C-R>=strftime("%Y-%m-%d ")<CR><Esc>
+inoremap <leader>d <C-R>=strftime("%Y-%m-%d ")<CR>
 "imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 "
 """"""""""""""""""""""""""""""""""""""""""""
+" 加入 auto-pairs 插件后, iab 已经不起作用了
 " 缩写替换功能, 下面是演示, 在插入模式中输入缩写后可以自动替换成后面的字符串
-iabbrev @@ codergege@163.com
-iabbrev ccopy Copyright 2016 codergege, all rights reserved.
+"iabbrev @@ codergege@163.com
+"iabbrev ccopy Copyright 2016 codergege, all rights reserved.
 
 " imod 插入时间 为什么不起作用了呢
-iabbrev ,d <C-R>=strftime("%Y-%m-%d")<CR>
-iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-" java 缩写替换
-iab psvm public static void main(String[] args) { }<UP><END><BS><BS>
+"iabbrev ,d <C-R>=strftime("%Y-%m-%d")<CR>
+"iabbrev ,t <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+" java 缩写替
+"iab psvm public static void main(String[] args) { }<UP><END><BS><BS>
 "iab { { }<UP><END><BS><BS>
-iab syso System.out.println();<LEFT><LEFT>
-iab syse System.err.println();<LEFT><LEFT>
+"iab syso System.out.println();<LEFT><LEFT>
+"iab syse System.err.println();<LEFT><LEFT>
 """"""""""""""""""""""""""""""""""""""""""""
 " autocmd event pattern command
 " 自动检测 event, 如果符合 pattern, 就执行 command
@@ -289,17 +275,35 @@ autocmd BufWritePre,BufRead *.html :normal gg=G
 
 " html 文件 ,f -> fold 当前 tag
 autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+
 " 一般 BufNewFile,BufRead 这两个事件都会一起使用
 " 编辑 html 文件时, 不 wrap 
 autocmd BufNewFile,BufRead *.html set nowrap
-" 当是 javascript 文件时设置注释为 //
-" 其他 注释
-" autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
-"autocmd FileType java nnoremap <buffer> <localleader>c I//<esc>
+
 " autocmd 和 abbrev 配合
 " 当是 javascript file 时, 输入 iff 自动替换成 if () 并将光标放在 （） 内
-autocmd FileType javascript iabbrev <buffer> iff if ()<left>
-" 这条想法不能执行, 得想其他办法
-"autocmd FileType javascript iabbrev  iff if ()<esc>hi
+" autocmd FileType javascript iabbrev <buffer> iff if ()<left>
 
 augroup END
+
+"""""""""""""" FUNCTION """""""""""""""""
+" 最大化当前窗口
+function! Zoom ()
+    " check if is the zoomed state (tabnumber > 1 && window == 1)
+    if tabpagenr('$') > 1 && tabpagewinnr(tabpagenr(), '$') == 1
+        let l:cur_winview = winsaveview()
+        let l:cur_bufname = bufname('')
+        tabclose
+
+        " restore the view
+        if l:cur_bufname == bufname('')
+            call winrestview(cur_winview)
+        endif
+    else
+        tab split
+    endif
+endfunction
+
+nnoremap <leader>z :call Zoom()<CR>
+
+"
