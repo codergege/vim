@@ -241,7 +241,7 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " nmod 加入空行, 并返回 nmod
 nnoremap <leader>j o<esc>k
 " 折叠
-set foldmethod=manual
+set foldmethod=marker
 " 设置折叠切换为 <space> 
 nnoremap <space> za
 
