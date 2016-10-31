@@ -54,6 +54,8 @@ Plugin 'jceb/vim-textobj-uri'
 
 " 自动不全
 Plugin 'Auto-Pairs'
+" 缩进虚线, terminal vim 下不好看, 而且宽度设置有问题, 算了
+"Plugin 'Indent-Guides'
 
 " java 
 Plugin 'artur-shaik/vim-javacomplete2'
@@ -106,6 +108,17 @@ set clipboard=unnamedplus
 " 不起作用
 " set pastetoggle=<f12>
 
+" 打开 vim 时自动允许 indent-guides
+"let g:indent_guides_enable_on_vim_startup = 1
+" 设置缩进显示的宽度
+"let g:indent_guides_guide_size = 1
+" 设置缩进线颜色百分比
+"let g:indent_guides_color_change_percent = 5
+
+"General recommended settings for editing "*.txt" files
+set nocp et ts=4 sw=4 tw=80 ai
+" 让第 80 列高亮
+set cc=80
 " 自动保存
 au FocusLost * silent! wa
 let autosave=5
@@ -125,11 +138,12 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 " 不要用空格代替制表符
-set noexpandtab
+"set noexpandtab
 " 设置语法高亮
 syntax on
-" 设置 nu
+" 设置 nu, rnu
 set nu
+set rnu
 " Show line number, curso position
 set ruler
 
