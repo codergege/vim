@@ -45,6 +45,8 @@ Plugin 'kana/vim-textobj-entire'
 " yaF to Yank A Function with leading or trailing blank lines, and
 " viF to visually select a function without leading or trailing blank lines.
 Plugin 'kana/vim-textobj-function'
+" pending 模式 fold az, ai
+" Plugin 'textobj-fold'
 
 " text-obj - url: au, iu with or without tailing spaces
 Plugin 'jceb/vim-textobj-uri'
@@ -239,7 +241,7 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " nmod 加入空行, 并返回 nmod
 nnoremap <leader>j o<esc>k
 " 折叠
-set foldmethod=marker
+set foldmethod=manual
 " 设置折叠切换为 <space> 
 nnoremap <space> za
 
