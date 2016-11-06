@@ -60,7 +60,7 @@ Plugin 'Auto-Pairs'
 "Plugin 'Indent-Guides'
 
 " java 
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 " 以后考虑安装的插件
 "Plugin 'java_src_link.vim'
 "Plugin 'Java-Syntax-and-Folding'
@@ -276,7 +276,7 @@ augroup codergege
 autocmd!
 
 " enable javacomplete2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " nerdtree 自动打开 nerdtree, 并将光标停留在右侧编辑区
 autocmd vimenter * NERDTree
