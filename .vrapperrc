@@ -1,0 +1,19 @@
+set camap
+set autoindent
+set ignorecase
+set smartcase
+set incsearch
+set cursorline
+set clipboard=unnamedplus
+set cc=80
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+noremap H ^
+noremap L $
+inoremap jk <esc>
+vnoremap jk <esc>
+
+
