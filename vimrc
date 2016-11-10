@@ -118,7 +118,7 @@ set clipboard=unnamedplus
 "let g:indent_guides_color_change_percent = 5
 
 "General recommended settings for editing "*.txt" files
-set nocp et ts=4 sw=4 tw=80 ai
+"set nocp et ts=4 sw=4 tw=80 ai
 " 让第 80 列高亮
 set cc=80
 " 自动保存
