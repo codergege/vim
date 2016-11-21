@@ -103,6 +103,8 @@ colorscheme molokai
 " vimwiki
 " 禁用驼峰词条
 let g:vimwiki_camel_case=0
+" vimwiki 使用 markdown 语法
+
 
 " vim 中拷贝到系统剪切板
 set clipboard=unnamedplus
