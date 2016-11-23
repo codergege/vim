@@ -54,10 +54,13 @@ Plugin 'jceb/vim-textobj-uri'
 " 这个插件不能被 vundle 加入, 自动补全
 "plugin 'kana/vim-smartinput'
 
-" 自动不全
+" 自动补全
 Plugin 'Auto-Pairs'
 " 缩进虚线, terminal vim 下不好看, 而且宽度设置有问题, 算了
 "Plugin 'Indent-Guides'
+" 状态栏
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
 
 " java 
 " Plugin 'artur-shaik/vim-javacomplete2'
@@ -99,6 +102,34 @@ colorscheme molokai
 " nerdtree
 "" 是否显示隐藏文件
 "let NERDTreeShowHidden=1
+
+" 状态栏
+set guifont=Inconsolata\ for\ Powerline:h15 
+let g:Powerline_symbols='fancy' 
+set t_Co=256 
+set fillchars+=stl:\ ,stlnc:\ 
+set term=xterm-256color 
+set termencoding=utf-8
+
+" 原生 Status line
+"set laststatus=2
+"set statusline=
+"" buffer number
+"set statusline+=%-3.3n\
+"" filename
+"set statusline+=%f\
+"" status flags
+"set statusline+=%h%m%r%w
+"" file type
+"set statusline+=\[%{strlen(&ft)?&ft:'none'}]
+"" right align remainder
+"set statusline+=%=
+"" character value
+"set statusline+=0x%-8B
+"" line, character
+"set statusline+=%-14(%l,%c%V%)
+"" file posistion
+"set statusline+=%<%P
 
 " vimwiki
 " 禁用驼峰词条
@@ -150,26 +181,6 @@ set nu
 set rnu
 " Show line number, curso position
 set ruler
-
-" Status line
-set laststatus=2
-set statusline=
-"" buffer number
-set statusline+=%-3.3n\
-"" filename
-set statusline+=%f\
-"" status flags
-set statusline+=%h%m%r%w
-"" file type
-set statusline+=\[%{strlen(&ft)?&ft:'none'}]
-"" right align remainder
-set statusline+=%=
-"" character value
-set statusline+=0x%-8B
-"" line, character
-set statusline+=%-14(%l,%c%V%)
-"" file posistion
-set statusline+=%<%P
 
 """"""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""
