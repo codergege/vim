@@ -59,7 +59,10 @@ Plugin 'Auto-Pairs'
 " 缩进虚线, terminal vim 下不好看, 而且宽度设置有问题, 算了
 "Plugin 'Indent-Guides'
 " 状态栏
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 
 
 " java 
@@ -104,12 +107,12 @@ colorscheme molokai
 "let NERDTreeShowHidden=1
 
 " 状态栏
-set guifont=Inconsolata\ for\ Powerline:h15 
-let g:Powerline_symbols='fancy' 
-set t_Co=256 
-set fillchars+=stl:\ ,stlnc:\ 
-set term=xterm-256color 
-set termencoding=utf-8
+"set guifont=Inconsolata\ for\ Powerline:h15 
+"let g:Powerline_symbols='fancy' 
+"set t_Co=256 
+"set fillchars+=stl:\ ,stlnc:\ 
+"set term=xterm-256color 
+"set termencoding=utf-8
 
 " 原生 Status line
 "set laststatus=2
